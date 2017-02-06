@@ -55,7 +55,7 @@
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
         <section>
-          <h1>Functional Programming in JS</h1>
+          <h3>Functional Programming in JS</h3>
           <p>
             <small>
               Josh Thomas / <a href="http://twitter.com/jthoms1">@jthoms1</a>
@@ -96,6 +96,10 @@
           </ul>
         </section>
 
+        <section>
+          Concepts will build, ask questions if something doesn't make sense.
+        </section>
+
         <section data-transition="slide-in fade-out">
           <pre><code class="javascript" data-trim>
 var people = [
@@ -109,7 +113,7 @@ var names = [];
 for (var i = 0; i < people.length; i += 1) {
   names.push(people[i].name);
 }
-console.log(names); // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre><br/><br/><br/>
         </section>
         <section data-transition="fade-in fade-out">
@@ -125,7 +129,7 @@ var names = [];
 people.forEach(function(person) {
   names.push(person.name);
 });
-console.log(names); // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
           <ul>
             <li class="fragment fade-in"><b>Lambda</b> (Anonymous function)</li>
@@ -147,7 +151,7 @@ var people = [
 var names = people.map(function(person) {
   return person.name;
 });
-console.log(names); // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
           <ul>
             <li class="fragment fade-in"><b>Pure Function</b> (no side effects)</li>
@@ -168,14 +172,15 @@ function getAttribute(obj, attributeName) {
 }
 
 
-var names = people.map(function(person) {
+people.map(function(person) {
   return getAttribute(person, 'name');
 }));
-console.log(names); // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
           <ul>
             <li><b>Pure Function</b> (no side effects)</li>
-            <li>Functions as first class citizens<br/><br/></li>
+            <li>Functions as first class citizens</li>
+            <li>ES5 Array functions: map, reduce, filter, find</li>
           </ul>
         </section>
 
@@ -194,8 +199,8 @@ function getAttribute(attributeName) {
 }
 var getName = getAttribute('name');
 
-var names = people.map(getName);
-console.log(names); // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+people.map(getName);
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
           <ul>
             <li class="fragment fade-in"><b>Currying</b> is changing a function that takes multiple
@@ -218,75 +223,67 @@ function getAttribute(attributeName) {
 }
 
 
-console.log(people.map(getAttribute('name')));
-  // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+people.map(getAttribute('name'));
+// ['Josh', 'Lindsey', 'Ellie', 'Addie']
+  
           </code></pre>
           <ul>
-            <li class="fragment fade-in"><b>Currying</b> is changing a function that takes multiple
+            <li><b>Currying</b> is changing a function that takes multiple
             arguments into a sequence of functions with the same result. </li>
           </ul>
         </section>
 
-        <section data-transition="fade-in slide-out">
-          <pre><code class="javascript" data-trim style="max-height: 800px">
-var people = [...];
-function getAttribute(attributeName) {
-  return function(obj) {
-    return obj[attributeName];
-  }
-}
-function strLength(str) {
-  return str.length;
-}
-function evenOrOdd(num) {
-  return (num % 2) === 1 ? 'odd' : 'even';
-}
-
-var results = people
-  .map(getAttribute('name'))
-  .map(strLength)
-  .map(evenOrOdd);
-console.log(results);
-// ['even', 'odd', 'odd', 'odd']
-
-          </code></pre>
-        </section>
-
-        <section data-transition="fade-in slide-out">
-          <pre><code class="javascript" data-trim style="max-height: 800px">
-var people = [...];
-function getAttribute(attributeName) {
-  return function(obj) {
-    return obj[attributeName];
-  }
-}
-function strLength(str) {
-  return str.length;
-}
-function evenOrOdd(num) {
-  return (num % 2) === 1 ? 'odd' : 'even';
-}
-function compose() {
-  var fns = arguments;
-
-  return function (result) {
-    for (var i = fns.length - 1; i > -1; i -= 1) {
-      result = fns[i].call(this, result);
-    }
-    return result;
-  };
-};
-var isNameEvenOrOddLength = compose(evenOrOdd, strLength, getAttribute('name'))
-console.log(people.map(isNameEvenOrOddLength));
-// ['even', 'odd', 'odd', 'odd']
-
-          </code></pre>
+        <section>
+          <h2>Library helper functions FTW</h2>
           <ul>
-            <li class="fragment fade-in"><b>Function Composition</b> is combining
-            multiple functions where the output of one function is the input for another.</li>
+            <li>map, reduce, filter</li>
+            <li>compose</li>
+            <li>curry</li>
           </ul>
         </section>
 
+        <section data-transition="fade-in slide-out">
+          <pre><code class="javascript" data-trim style="max-height: 800px">
+var people = [...];
+function getAttribute(attributeName) {
+  return function(obj) {
+    return obj[attributeName];
+  }
+}
+function strLength(str) {
+  return str.length;
+}
+
+var results = people
+  .map(getAttribute('name')) // ['Josh', 'Lindsey', 'Ellie', 'Addie']
+  .map(strLength); // [4, 7, 5, 5]
+          </code></pre>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <pre><code class="javascript" data-trim style="max-height: 800px">
+var people = [...];
+
+var getAttribute = curry(function(attributeName, obj) {
+  return obj[attributeName];
+});
+function strLength(str) {
+  return str.length;
+}
+getNameLength = compose(strLength, getAttribute('name'));
+
+map(getNameLength, people); // [4, 7, 5, 5]
+          </code></pre>
+          <ul>
+            <li class="fragment fade-in"><b>Function Composition</b> is combining
+            multiple functions where the output of one function is the input to another.</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <li>Auto-currying</li>
+          </ul>
+        </section>
         <section>
           <h2>Barriers to Going All In</h2>
           <ul>
@@ -299,9 +296,9 @@ console.log(people.map(isNameEvenOrOddLength));
         <section>
           <h2>Helper Libs</h2>
           <ul>
-            <li>ImmutableJS</li>
-            <li>lodash/fp</li>
-            <li>Ramda</li>
+            <li><a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash/fp</a></li>
+            <li><a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></li>
+            <li><a href="http://ramdajs.com/">Ramda</a></li>
           </ul>
         </section>
 
@@ -320,6 +317,7 @@ console.log(people.map(isNameEvenOrOddLength));
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+    <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
 
     <script>
 
