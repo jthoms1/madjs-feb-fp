@@ -39,7 +39,12 @@
     	    margin: -15px auto 0;
       }
       b {
+        font-weight: normal;
         color:aqua;
+      }
+      i {
+        font-style: normal;
+        color: yellow;
       }
     </style>
 
@@ -69,21 +74,22 @@
         </section>
 
         <section>
-          <h2>What is Functional Programming (FP)?</h2>
-          <blockquote>
-            In computer science, functional programming is a programming paradigm—a style of 
-            building the structure and elements of computer programs—that treats computation as 
-            the evaluation of mathematical functions and avoids changing-state and mutable data.
-            <footer>- wikipedia</footer>
-          </blockquote>
-        </section>
-
-        <section>
-          <h2>What is Functional Programming (FP)?</h2>
-          <blockquote>
-            Functional programming is a style of building programs where application data flows through functions.
-            <footer class="fragment">- me</footer>
-          </blockquote>
+          <section>
+            <h2>What is Functional Programming (FP)?</h2>
+            <blockquote>
+              In computer science, functional programming is a programming paradigm—a style of 
+              building the structure and elements of computer programs—that treats computation as 
+              the evaluation of mathematical functions and avoids changing-state and mutable data.
+              <footer>- wikipedia</footer>
+            </blockquote>
+          </section>
+          <section>
+            <h2>What is Functional Programming (FP)?</h2>
+            <blockquote>
+              Functional programming is a style of building programs where application data flows through functions.
+              <footer class="fragment">- me</footer>
+            </blockquote>
+          </section>
         </section>
 
         <section>
@@ -96,8 +102,20 @@
           </ul>
         </section>
 
+
         <section>
-          Concepts will build, ask questions if something doesn't make sense.
+          <ul>
+            <li>Get to learn some new terms that make you sound like you're brilliant.</li>
+          <ul>
+          <img class="fragment zoom-in" src="images/nick_cage_you_dont_say.jpg" alt="you don't say"/>
+        </section>
+
+        <section>
+          <ul>
+            <li>Concepts will build, so please <strong>ask questions</strong> if something doesn't make sense.</li>
+            <li>Blue font is to identify <b>concepts</b>.</li>
+            <li>Yellow font is to identify <i>function names</i>.</li>
+          </ul>
         </section>
 
         <section data-transition="slide-in fade-out">
@@ -114,10 +132,11 @@ for (var i = 0; i < people.length; i += 1) {
   names.push(people[i].name);
 }
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
-          </code></pre><br/><br/><br/>
+          </code></pre><br/><br/><br/><br/>
         </section>
         <section data-transition="fade-in fade-out">
-          <pre><code class="javascript" data-trim>
+          <section>
+            <pre><code class="javascript" data-trim>
 var people = [
   { name: 'Josh', age: 35, occupation: 'Developer' },
   { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
@@ -130,16 +149,25 @@ people.forEach(function(person) {
   names.push(person.name);
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
-          </code></pre>
-          <ul>
-            <li class="fragment fade-in"><b>Lambda</b> (Anonymous function)</li>
-            <li class="fragment fade-in">forEach is a <b>Higher Order Function</b>
-            <li class="fragment fade-in">Unfortunately this has <b>Side effects</b></li>
-          </ul>
+            </code></pre>
+            <ul>
+              <li class="fragment fade-in"><b>Lambda</b> (Anonymous function)</li>
+              <li class="fragment fade-in">forEach is a <b>Higher Order Function</b>
+              <li class="fragment fade-in">Unfortunately this has <b>Side effects</b></br></br></li>
+            </ul>
+          </section>
+         	<section>
+            <ul>
+              <li><b>Lambda</b> function is a function that is not bound to an identifier and often used as arguments to higher order functions</br><br/></li>
+              <li><b>Higher Order Function</b> is a function that: takes a function as an argument or returns a function as its result. It is a function that operates on other functiouns.</br></br></li>
+              <li><b>Side effects</b> occur when a function or expression is said to have a side effect if it modifies some state outside its scope.</li>
+            </ul>
+					</section>
         </section>
 
         <section data-transition="fade-in fade-out">
-          <pre><code class="javascript" data-trim>
+          <section>
+            <pre><code class="javascript" data-trim>
 var people = [
   { name: 'Josh', age: 35, occupation: 'Developer' },
   { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
@@ -153,10 +181,17 @@ var names = people.map(function(person) {
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
-          <ul>
-            <li class="fragment fade-in"><b>Pure Function</b> (no side effects)</li>
-            <li class="fragment fade-in">Functions as first class citizens<br/><br/></li>
-          </ul>
+            <ul>
+              <li class="fragment fade-in">The <i>map</i> array method creates a new array with the results of calling a provided function on every element.</li>
+              <li class="fragment fade-in">ES5 Array functions: <i>map, reduce, filter, find</i></li>
+              <li class="fragment fade-in"><b>Pure Function</b> (no side effects)</li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>A <b>Pure Function</b> is a function where the return value is only determined by its input values, without observable side effects.</li>
+            </ul>
+          </section>
         </section>
 
         <section data-transition="fade-in fade-out">
@@ -178,14 +213,15 @@ people.map(function(person) {
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
           <ul>
+            <li>The <i>map</i> array method creates a new array with the results of calling a provided function on every element.</li>
+            <li>ES5 Array functions: <i>map, reduce, filter, find</i></li>
             <li><b>Pure Function</b> (no side effects)</li>
-            <li>Functions as first class citizens</li>
-            <li>ES5 Array functions: map, reduce, filter, find</li>
           </ul>
         </section>
 
         <section data-transition="fade-in slide-out">
-          <pre><code class="javascript" data-trim>
+          <section>
+            <pre><code class="javascript" data-trim>
 var people = [
   { name: 'Josh', age: 35, occupation: 'Developer' },
   { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
@@ -201,11 +237,18 @@ var getName = getAttribute('name');
 
 people.map(getName);
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
-          </code></pre>
-          <ul>
-            <li class="fragment fade-in"><b>Currying</b> is changing a function that takes multiple
-            arguments into a sequence of functions with the same result. </li>
-          </ul>
+            </code></pre>
+            <ul>
+              <li class="fragment fade-in">The <i>getAttribute</i> function got more useful and generalized 
+                through the use of a technic called <b>currying</b>.<br/><br/><br/></li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li><b>Currying</b> is changing a function that takes multiple
+              arguments into a sequence of functions with the same result. </li>
+            </ul>
+          </section>
         </section>
 
         <section data-transition="fade-in slide-out">
@@ -228,48 +271,92 @@ people.map(getAttribute('name'));
   
           </code></pre>
           <ul>
-            <li><b>Currying</b> is changing a function that takes multiple
-            arguments into a sequence of functions with the same result. </li>
+            <li class="fragment fade-in">Get used to this style. Functional JS just looks like functions passed to
+              functions with some string or array mixed in. This might seem weird at first but you will adjust with use.</li>
           </ul>
         </section>
 
         <section>
-          <h2>Library helper functions FTW</h2>
+          <h2>Library based helper functions</h2>
           <ul>
-            <li>map, reduce, filter</li>
             <li>compose</li>
             <li>curry</li>
+            <li>map, reduce, filter</li>
           </ul>
         </section>
 
         <section data-transition="fade-in slide-out">
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
+function strLength(str) {
+  return str.length;
+}
+
 function getAttribute(attributeName) {
   return function(obj) {
     return obj[attributeName];
   }
 }
-function strLength(str) {
+
+var results = people
+  .map(getAttribute('name')) //['Josh', 'Lindsey', 'Ellie', 'Addie']
+  .map(strLength); // [4, 7, 5, 5]
+          </code></pre></br></br>
+        </section>
+        <section data-transition="fade-in slide-out">
+          <pre><code class="javascript" data-trim style="max-height: 800px">
+var people = [...];
+function strlength(str) {
   return str.length;
 }
 
+var getattribute = curry(function(attributename, obj) {
+  return obj[attributename];
+});
+
+
+
 var results = people
-  .map(getAttribute('name')) // ['Josh', 'Lindsey', 'Ellie', 'Addie']
-  .map(strLength); // [4, 7, 5, 5]
+  .map(getattribute('name')) //['josh', 'lindsey', 'ellie', 'addie']
+  .map(strlength); // [4, 7, 5, 5]
           </code></pre>
+          <ul>
+            <li class="fragment fade-in">The <i>curry</i> function takes a function as its argument and returns a curried version of that function.</li>
+          </ul>
         </section>
 
         <section data-transition="fade-in slide-out">
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
+function strlength(str) {
+  return str.length;
+}
+
+var getattribute = curry(function(attributename, obj) {
+  return obj[attributename];
+});
+
+var getNameLength = compose(strLength, getAttribute('name'));
+
+var results = people
+  .map(compose(strLength, getattribute('name')))
+// [4, 7, 5, 5]
+          </code></pre></br></br>
+        </section>
+
+        <section data-transition="fade-in slide-out">
+          <pre><code class="javascript" data-trim style="max-height: 800px">
+var people = [...];
+function strLength(str) {
+  return str.length;
+}
 
 var getAttribute = curry(function(attributeName, obj) {
   return obj[attributeName];
 });
-function strLength(str) {
-  return str.length;
-}
+
+
+
 getNameLength = compose(strLength, getAttribute('name'));
 
 map(getNameLength, people); // [4, 7, 5, 5]
@@ -310,6 +397,7 @@ map(getNameLength, people); // [4, 7, 5, 5]
             <li><a href="http://react.parts">http://react.parts</a></li>
             <li><a href="http://facebook.github.io/flux">http://facebook.github.io/flux</a></li>
             <li><a href="https://github.com/rackt/react-router">https://github.com/rackt/react-router</a></li>
+            http://eloquentjavascript.net/
         </section>
 
       </div>
