@@ -1,0 +1,23 @@
+{
+  "name": "madjs-feb-fp",
+  "version": "1.0.0",
+  "description": "Presentation on Functional Programming in JavaScript",
+  "main": "examples.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jthoms1/madjs-feb-fp.git"
+  },
+  "author": "Josh Thomas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jthoms1/madjs-feb-fp/issues"
+  },
+  "homepage": "https://github.com/jthoms1/madjs-feb-fp#readme",
+  "dependencies": {
+    "jest": "^18.1.0",
+    "lodash": "^4.17.4"
+  }
+}
