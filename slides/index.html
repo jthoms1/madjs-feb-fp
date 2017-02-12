@@ -72,10 +72,6 @@
           <p>
             <small>
               Josh Thomas / <a href="http://twitter.com/jthoms1">@jthoms1</a>
-              <img style="display: inline-block; width: 40px; margin-top: -4px; margin-left: 5px"
-                class="nostyle"
-                src="images/twitter-logo.png"
-              />
             </small>
             <img class="roundup" src="images/jthoms1-logo.png" alt="archer" />
           </p>
@@ -127,19 +123,30 @@
           </ul>
         </section>
 
+        <section>
+          <pre><code class="javascript" data-trim>
+var people = [
+  { first_name: 'Josh', last_name: 'Thomas',
+    age: 35, occupation: 'Developer' },
+  { first_name: 'Lindsey', last_name: 'Thomas',
+    age: 35, occupation: 'Project Manager' },
+  { first_name: 'Ellie', last_name: 'Thomas',
+    age: 2, occupation: 'Baby'},
+  { first_name: 'Addie', last_name: 'Thomas',
+    age: 1, occupation: 'Baby'}
+];
+           </code></pre> 
+        </section>
+
         <section data-transition="slide-in fade-out">
           <span class="example-num">example1</span>
           <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
+var people = [...];
+
 var names = [];
 
 for (var i = 0; i < people.length; i += 1) {
-  names.push(people[i].name);
+  names.push(people[i].first_name);
 }
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
@@ -152,16 +159,12 @@ for (var i = 0; i < people.length; i += 1) {
           <section>
             <span class="example-num">example2</span>
             <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
+var people = [...];
+
 var names = [];
 
 people.forEach(function(person) {
-  names.push(person.name);
+  names.push(person.first_name);
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
             </code></pre>
@@ -185,16 +188,10 @@ people.forEach(function(person) {
           <section>
             <span class="example-num">example3</span>
             <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
-
+var people = [...];
 
 var names = people.map(function(person) {
-  return person.name;
+  return person.first_name;
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
@@ -215,19 +212,15 @@ var names = people.map(function(person) {
         <section data-transition="fade-in fade-out">
           <span class="example-num">example4</span>
           <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
+var people = [...];
+
 function getAttribute(obj, attributeName) {
   return obj[attributeName];
 }
 
 
 people.map(function(person) {
-  return getAttribute(person, 'name');
+  return getAttribute(person, 'first_name');
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
@@ -242,18 +235,14 @@ people.map(function(person) {
           <section>
             <span class="example-num">example5</span>
             <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
+var people = [...];
+
 function getAttribute(attributeName) {
   return function(obj) {
     return obj[attributeName];
   }
 }
-var getName = getAttribute('name');
+var getName = getAttribute('first_name');
 
 people.map(getName);
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
@@ -274,12 +263,8 @@ people.map(getName);
         <section data-transition="fade-in slide-out">
           <span class="example-num">example6</span>
           <pre><code class="javascript" data-trim>
-var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
-];
+var people = [...];
+
 function getAttribute(attributeName) {
   return function(obj) {
     return obj[attributeName];
@@ -287,7 +272,7 @@ function getAttribute(attributeName) {
 }
 
 
-people.map(getAttribute('name'));
+people.map(getAttribute('first_name'));
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
   
           </code></pre>
@@ -321,7 +306,7 @@ function getAttribute(attributeName) {
 }
 
 var results = people
-  .map(getAttribute('name')) //['Josh', 'Lindsey', 'Ellie', 'Addie']
+  .map(getAttribute('first_name')) //['Josh', 'Lindsey', 'Ellie', 'Addie']
   .map(strLength);
 
 // [4, 7, 5, 5]
@@ -342,7 +327,7 @@ var getAttribute = curry(function(attributename, obj) {
 });
 
 var results = people
-  .map(getAttribute('name')) //['josh', 'lindsey', 'ellie', 'addie']
+  .map(getAttribute('first_name')) //['josh', 'lindsey', 'ellie', 'addie']
   .map(strlength);
 
 // [4, 7, 5, 5]
@@ -368,7 +353,7 @@ var getAttribute = curry(function(attributename, obj) {
 var results = people
   .map(compose(
     strLength,
-    getAttribute('name')
+    getAttribute('first_name')
   ));
 // [4, 7, 5, 5]
           </code></pre>
@@ -379,7 +364,7 @@ var results = people
           <p>&nbsp;</p>
         </section>
 
-        <section data-transition="fade-in slide-out">
+        <section data-transition="fade-in fade-out">
           <span class="example-num">example10</span>
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
@@ -394,7 +379,7 @@ var getAttribute = curry(function(attributeName, obj) {
 var results = map(
   compose(
     strLength,
-    getAttribute('name')
+    getAttribute('first_name')
   ), people);
 // [4, 7, 5, 5]
           </code></pre>
@@ -405,7 +390,7 @@ var results = map(
           </ul>
         </section>
 
-        <section>
+        <section data-transition="fade-in slide-out">
           <span class="example-num">example10</span>
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
@@ -413,14 +398,10 @@ function strLength(str) {
   return str.length;
 }
 
-var getAttribute = curry(function(attributeName, obj) {
-  return obj[attributeName];
-});
-
 var mapToNameLength = map(
   compose(
     strLength,
-    getAttribute('name')
+    get('first_name')
   ));
 
 var results = mapToNameLength(people);
@@ -469,11 +450,13 @@ var results = mapToNameLength(people);
     <script src="../examples.js"></script>
     <script>
     var people = [
-      { name: 'Josh', age: 35, occupation: 'Developer' },
-      { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-      { name: 'Ellie', age: 2, occupation: 'Baby'},
-      { name: 'Addie', age: 1, occupation: 'Baby'}
+      { first_name: 'Josh',    last_name: 'Thomas', age: 35, occupation: 'Developer' },
+      { first_name: 'Lindsey', last_name: 'Thomas', age: 35, occupation: 'Project Manager' },
+      { first_name: 'Ellie',   last_name: 'Thomas', age: 2,  occupation: 'Baby'},
+      { first_name: 'Addie',   last_name: 'Thomas', age: 1,  occupation: 'Baby'}
     ];
+
+    get all people over 2 that are Developers with firstName at least 3 characters long sorted By LastName
     </script>
 
     <script>

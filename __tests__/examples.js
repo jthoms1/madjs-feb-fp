@@ -1,8 +1,8 @@
 var people = [
-  { name: 'Josh', age: 35, occupation: 'Developer' },
-  { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-  { name: 'Ellie', age: 2, occupation: 'Baby'},
-  { name: 'Addie', age: 1, occupation: 'Baby'}
+  { first_name: 'Josh',    last_name: 'Thomas', age: 35, occupation: 'Developer' },
+  { first_name: 'Lindsey', last_name: 'Thomas', age: 35, occupation: 'Project Manager' },
+  { first_name: 'Ellie',   last_name: 'Thomas', age: 2,  occupation: 'Baby'},
+  { first_name: 'Addie',   last_name: 'Thomas', age: 1,  occupation: 'Baby'}
 ];
 var examples = require('../examples');
 

@@ -11,6 +11,9 @@
   var curry = lodashfp.curry;
   var compose = lodashfp.compose;
   var map = lodashfp.map;
+  var reduce = lodashfp.reduce;
+  var filter = lodashfp.filter;
+  var get = lodashfp.get;
 
   /**
    * 
@@ -19,7 +22,7 @@
     var names = [];
 
     for (var i = 0; i < people.length; i += 1) {
-      names.push(people[i].name);
+      names.push(people[i].first_name);
     }
     return names;
   }
@@ -31,7 +34,7 @@
     var names = [];
 
     people.forEach(function(person) {
-      names.push(person.name);
+      names.push(person.first_name);
     });
     return names;
   }
@@ -41,7 +44,7 @@
    */
   exports.example3 = function(people) {
     var names = people.map(function(person) {
-      return person.name;
+      return person.first_name;
     });
     return names;
   }
@@ -55,7 +58,7 @@
     }
 
     return people.map(function(person) {
-      return getAttribute(person, 'name');
+      return getAttribute(person, 'first_name');
     });
   }
 
@@ -68,7 +71,7 @@
         return obj[attributeName];
       }
     }
-    var getName = getAttribute('name');
+    var getName = getAttribute('first_name');
 
     return people.map(getName);
   }
@@ -83,7 +86,7 @@
       }
     }
 
-    return people.map(getAttribute('name'));
+    return people.map(getAttribute('first_name'));
   }
 
   /**
@@ -101,7 +104,7 @@
     }
 
     return people
-      .map(getAttribute('name'))
+      .map(getAttribute('first_name'))
       .map(strLength);
   }
 
@@ -118,7 +121,7 @@
     });
 
     return people
-      .map(getattribute('name'))
+      .map(getattribute('first_name'))
       .map(strlength); 
   }
 
@@ -135,7 +138,7 @@
     });
 
     return people
-      .map(compose(strLength, getAttribute('name')));
+      .map(compose(strLength, getAttribute('first_name')));
   }
 
   /**
@@ -153,7 +156,7 @@
     return map(
       compose(
         strLength,
-        getAttribute('name')
+        getAttribute('first_name')
       ),
       people);
   }
@@ -166,14 +169,27 @@
       return str.length;
     }
 
-    var getAttribute = curry(function(attributeName, obj) {
-      return obj[attributeName];
-    });
+    var mapToNameLength = map(
+      compose(
+        strLength,
+        get('first_name')
+      ));
+
+    return mapToNameLength(people);
+  }
+
+  /**
+   * 
+   */
+  exports.example11 = function(people) {
+    function strLength(str) {
+      return str.length;
+    }
 
     var mapToNameLength = map(
       compose(
         strLength,
-        getAttribute('name')
+        get('first_name')
       ));
 
     return mapToNameLength(people);
