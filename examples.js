@@ -9,13 +9,13 @@
   }
 }(this, function (exports, lodashfp) {
   var curry = lodashfp.curry;
-  var compose = lodashfp.compose;
   var map = lodashfp.map;
   var reduce = lodashfp.reduce;
   var filter = lodashfp.filter;
   var get = lodashfp.get;
   var propEq = lodashfp.propEq;
   var pick = lodashfp.pick;
+  var pickIn = lodashfp.pickIn;
   var sortBy = lodashfp.sortBy;
   var flow = lodashfp.flow;
   var allPass = lodashfp.allPass;
@@ -149,7 +149,7 @@
     });
 
     return people
-      .map(compose(strLength, getAttribute('first_name')));
+      .map(flow(getAttribute('first_name'), strLength));
   }
 
   /**
@@ -165,9 +165,9 @@
     });
 
     return map(
-      compose(
-        strLength,
-        getAttribute('first_name')
+      flow(
+        getAttribute('first_name'),
+        strLength
       ),
       people);
   }
@@ -181,16 +181,16 @@
     }
 
     var mapToNameLength = map(
-      compose(
-        strLength,
-        get('first_name')
+      flow(
+        get('first_name'),
+        strLength
       ));
 
     return mapToNameLength(people);
   }
 
   /**
-   * get all people full names over 2 that are Developers with firstName at least 3 characters long sorted By LastName
+   * get all people full names over 50 that are Developers with firstName at least 5 characters long sorted By LastName
    */
   exports.example12 = function(people) {
     function strLength(str) {
@@ -264,10 +264,15 @@
         conforms({
           'occupation': isEqual('Developer'),
           'age': lt(50),
-          'first_name': flow(strLength, lt(4))
+          'first_name': flow(
+            strLength,
+            lt(4)
+          )
         })
       ),
-      sortBy(get('last_name')),
+      sortBy(
+        get('last_name')
+      ),
       map(
         flow(
           pick(['first_name', 'last_name']),
