@@ -4,7 +4,8 @@
   "description": "Presentation on Functional Programming in JavaScript",
   "main": "examples.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest"
+    "test": "./node_modules/.bin/jest",
+    "watch": "./node_modules/.bin/jest --watch"
   },
   "repository": {
     "type": "git",

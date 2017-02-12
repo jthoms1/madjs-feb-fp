@@ -79,7 +79,7 @@ describe('get full names of Developers with firstName at least 5 characters long
     { first_name: 'Susan',   last_name: 'Wojcicki',   age: 48, occupation: 'CEO' }
   ];
   it('example12', () => {
-    const result = examples.example10(techPeople);
+    const result = examples.example12(techPeople);
     expect(result).toEqual([
       'Adele Goldberg',
       'Grace Hopper',
@@ -89,7 +89,7 @@ describe('get full names of Developers with firstName at least 5 characters long
     ]);
   });
   it('example13', () => {
-    const result = examples.example11(techPeople);
+    const result = examples.example13(techPeople);
     expect(result).toEqual([
       'Adele Goldberg',
       'Grace Hopper',
@@ -99,7 +99,7 @@ describe('get full names of Developers with firstName at least 5 characters long
     ]);
   });
   it('example14', () => {
-    const result = examples.example11(techPeople);
+    const result = examples.example14(techPeople);
     expect(result).toEqual([
       'Adele Goldberg',
       'Grace Hopper',

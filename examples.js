@@ -15,9 +15,19 @@
   var filter = lodashfp.filter;
   var get = lodashfp.get;
   var propEq = lodashfp.propEq;
+  var pick = lodashfp.pick;
+  var sortBy = lodashfp.sortBy;
+  var flow = lodashfp.flow;
+  var allPass = lodashfp.allPass;
+  var lt = lodashfp.lt;
+  var toArray = lodashfp.toArray;
+  var join = lodashfp.join;
+  var conforms = lodashfp.conforms;
+  var values = lodashfp.values;
+  var isEqual = lodashfp.isEqual;
 
   /**
-   * 
+   *
    */
   exports.example1 = function(people) {
     var names = [];
@@ -29,7 +39,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example2 = function(people) {
     var names = [];
@@ -41,7 +51,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example3 = function(people) {
     var names = people.map(function(person) {
@@ -51,7 +61,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example4 = function(people) {
     function getAttribute(obj, attributeName) {
@@ -64,7 +74,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example5 = function(people) {
     function getAttribute(attributeName) {
@@ -78,7 +88,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example6 = function(people) {
     function getAttribute(attributeName) {
@@ -91,7 +101,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example7 = function(people) {
     function strLength(str) {
@@ -110,7 +120,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example8 = function(people) {
     function strlength(str) {
@@ -123,11 +133,11 @@
 
     return people
       .map(getattribute('first_name'))
-      .map(strlength); 
+      .map(strlength);
   }
 
   /**
-   * 
+   *
    */
   exports.example9 = function(people) {
     function strLength(str) {
@@ -143,7 +153,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example10 = function(people) {
     function strLength(str) {
@@ -163,7 +173,7 @@
   }
 
   /**
-   * 
+   *
    */
   exports.example11 = function(people) {
     function strLength(str) {
@@ -192,9 +202,9 @@
     for (var i = 0; i < people.length; i += 1) {
       if ((people[i].occupation === 'Developer') &&
         (people[i].age > 50) &&
-        (strLength(people[i].first_name >= 5)))
+        (strLength(people[i].first_name) >= 5))
       {
-        foundPeople.push(people[i])
+        foundPeople.push(people[i]);
       }
     }
 
@@ -210,8 +220,8 @@
       return 0;
     });
 
-    for (var j = 0; j < foundPeople.length; i += 1) {
-      foundPeople[i] = foundPeople[i].first_name + ' ' + foundPeople[i].last_name;
+    for (var j = 0; j < foundPeople.length; j += 1) {
+      foundPeople[j] = foundPeople[j].first_name + ' ' + foundPeople[j].last_name;
     }
 
     return foundPeople;
@@ -242,19 +252,29 @@
           strLength(person.first_name) >= 5)
       })
       .sort(compareBy('last_name'))
-      .map(person => person.full_name + ' ' + person.last_name);
+      .map(person => person.first_name + ' ' + person.last_name);
   }
 
   exports.example14 = function(people) {
-    return compose(
+    function strLength(str) {
+      return str.length;
+    }
+    return flow(
       filter(
-        compose(
-          propEq('occupation', 'Developer'),
-          propEq('age', 50),
-        )
+        conforms({
+          'occupation': isEqual('Developer'),
+          'age': lt(50),
+          'first_name': flow(strLength, lt(4))
+        })
       ),
-      sortBy(pick('last_name')),
-      map(pick('full_name', 'last_name').join(' ')),
-    )
+      sortBy(get('last_name')),
+      map(
+        flow(
+          pick(['first_name', 'last_name']),
+          values,
+          join(' ')
+        )
+      )
+    )(people);
   }
 }));
