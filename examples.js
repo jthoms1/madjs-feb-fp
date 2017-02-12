@@ -152,8 +152,11 @@
       return obj[attributeName];
     });
 
-    getNameLength = compose(strLength, getAttribute('name'));
-
-    return map(getNameLength, people);
+    return map(
+      compose(
+        strLength,
+        getAttribute('name')
+      ),
+      people);
   }
 }));

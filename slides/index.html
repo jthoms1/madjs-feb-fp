@@ -101,15 +101,16 @@
         </section>
 
         <section>
-	        <h2>Why use FP?</h2>
-          <ul>
-            <li class="fragment fade-in">Concurrency</li>
-            <li class="fragment fade-in">Easier to reason about</li>
-            <li class="fragment fade-in">Code is easy to reuse</li>
-            <li class="fragment fade-in">Testing gets a lot easier</li>
-          </ul>
+          <section>
+            <h2>Why use FP?</h2>
+            <ul>
+              <li class="fragment fade-in">Concurrency <span class="fragment">(currently.... lol, javascript)</span></li>
+              <li class="fragment fade-in">Code is easy to reuse</li>
+              <li class="fragment fade-in">Testing gets a lot easier</li>
+              <li class="fragment fade-in">Easier to reason about</li>
+            </ul>
+          </section>
         </section>
-
 
         <section>
           <ul>
@@ -383,11 +384,13 @@ var getAttribute = curry(function(attributeName, obj) {
   return obj[attributeName];
 });
 
-
-
-getNameLength = compose(strLength, getAttribute('name'));
-
-map(getNameLength, people); // [4, 7, 5, 5]
+map(
+  compose(
+    strLength,
+    getAttribute('name')
+  ), people
+);
+// [4, 7, 5, 5]
           </code></pre>
           <ul>
             <li class="fragment fade-in"><b>Function Composition</b> is combining
