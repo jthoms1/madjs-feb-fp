@@ -4,7 +4,8 @@
     factory(exports, require('lodash/fp'));
   } else {
     // Browser globals
-    factory((root.commonJsStrictGlobal = {}), root._);
+    root.e = {};
+    factory(root.e, root._);
   }
 }(this, function (exports, lodashfp) {
   var curry = lodashfp.curry;
