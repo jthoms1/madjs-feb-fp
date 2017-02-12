@@ -6,14 +6,10 @@
     // Browser globals
     factory((root.commonJsStrictGlobal = {}), root._);
   }
-}(this, function (exports, b) {
-
-  exports.people = [
-    { name: 'Josh', age: 35, occupation: 'Developer' },
-    { name: 'Lindsey', age: 35, occupation: 'Project Manager' },
-    { name: 'Ellie', age: 2, occupation: 'Baby'},
-    { name: 'Addie', age: 1, occupation: 'Baby'}
-  ];
+}(this, function (exports, lodashfp) {
+  var curry = lodashfp.curry;
+  var compose = lodashfp.compose;
+  var map = lodashfp.map;
 
   /**
    * 
@@ -129,18 +125,18 @@
    * 
    */
   exports.example9 = function(people) {
-    function strlength(str) {
+    function strLength(str) {
       return str.length;
     }
 
-    var getattribute = curry(function(attributename, obj) {
+    var getAttribute = curry(function(attributename, obj) {
       return obj[attributename];
     });
 
     var getNameLength = compose(strLength, getAttribute('name'));
 
     return people
-      .map(compose(strLength, getattribute('name')))
+      .map(getNameLength);
   }
 
   /**
