@@ -14,6 +14,7 @@
   var reduce = lodashfp.reduce;
   var filter = lodashfp.filter;
   var get = lodashfp.get;
+  var propEq = lodashfp.propEq;
 
   /**
    * 
@@ -179,19 +180,81 @@
   }
 
   /**
-   * 
+   * get all people full names over 2 that are Developers with firstName at least 3 characters long sorted By LastName
    */
-  exports.example11 = function(people) {
+  exports.example12 = function(people) {
     function strLength(str) {
       return str.length;
     }
 
-    var mapToNameLength = map(
-      compose(
-        strLength,
-        get('first_name')
-      ));
+    var foundPeople = [];
 
-    return mapToNameLength(people);
+    for (var i = 0; i < people.length; i += 1) {
+      if ((people[i].occupation === 'Developer') &&
+        (people[i].age > 50) &&
+        (strLength(people[i].first_name >= 5)))
+      {
+        foundPeople.push(people[i])
+      }
+    }
+
+    foundPeople.sort(function(a, b) {
+      var nameA = a.last_name;
+      var nameB = b.last_name;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+
+    for (var j = 0; j < foundPeople.length; i += 1) {
+      foundPeople[i] = foundPeople[i].first_name + ' ' + foundPeople[i].last_name;
+    }
+
+    return foundPeople;
+  }
+
+  exports.example13 = function(people) {
+    function strLength(str) {
+      return str.length;
+    }
+    function compareBy(attrName) {
+      return function(a, b) {
+        var nameA = a[attrName];
+        var nameB = b[attrName];
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      };
+    }
+
+    return people
+      .filter(function(person) {
+        return (person.occupation === 'Developer' &&
+          person.age > 50 &&
+          strLength(person.first_name) >= 5)
+      })
+      .sort(compareBy('last_name'))
+      .map(person => person.full_name + ' ' + person.last_name);
+  }
+
+  exports.example14 = function(people) {
+    return compose(
+      filter(
+        compose(
+          propEq('occupation', 'Developer'),
+          propEq('age', 50),
+        )
+      ),
+      sortBy(pick('last_name')),
+      map(pick('full_name', 'last_name').join(' ')),
+    )
   }
 }));

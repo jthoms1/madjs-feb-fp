@@ -306,7 +306,7 @@ function getAttribute(attributeName) {
 }
 
 var results = people
-  .map(getAttribute('first_name')) //['Josh', 'Lindsey', 'Ellie', 'Addie']
+  .map(getAttribute('first_name'))
   .map(strLength);
 
 // [4, 7, 5, 5]
@@ -327,7 +327,7 @@ var getAttribute = curry(function(attributename, obj) {
 });
 
 var results = people
-  .map(getAttribute('first_name')) //['josh', 'lindsey', 'ellie', 'addie']
+  .map(getAttribute('first_name'))
   .map(strlength);
 
 // [4, 7, 5, 5]
@@ -456,7 +456,21 @@ var results = mapToNameLength(people);
       { first_name: 'Addie',   last_name: 'Thomas', age: 1,  occupation: 'Baby'}
     ];
 
-    get all people over 2 that are Developers with firstName at least 3 characters long sorted By LastName
+    var techPeople = [
+      { first_name: 'Adele',   last_name: 'Goldberg',   age: 71, occupation: 'Developer' },
+      { first_name: 'Audrey',  last_name: 'Tang',       age: 35, occupation: 'Developer' },
+      { first_name: 'Bill',    last_name: 'Gates',      age: 61, occupation: 'Philanthropist' },
+      { first_name: 'Gerald',  last_name: 'Sussman',    age: 70, occupation: 'Developer' },
+      { first_name: 'Grace',   last_name: 'Hopper',     age: 85, occupation: 'Developer' },
+      { first_name: 'Guy',     last_name: 'Steele',     age: 62, occupation: 'Developer' },
+      { first_name: 'Jade',    last_name: 'Raymond',    age: 41, occupation: 'Executive' },
+      { first_name: 'Jeff',    last_name: 'Bezos',      age: 53, occupation: 'CEO' },
+      { first_name: 'Marissa', last_name: 'Mayer',      age: 41, occupation: 'CEO' },
+      { first_name: 'Mark',    last_name: 'Zuckerberg', age: 32, occupation: 'CEO' },
+      { first_name: 'Martin',  last_name: 'Odersky',    age: 58, occupation: 'Developer' },
+      { first_name: 'Simon',   last_name: 'Jones',      age: 59, occupation: 'Developer' },
+      { first_name: 'Susan',   last_name: 'Wojcicki',   age: 48, occupation: 'CEO' }
+    ];
     </script>
 
     <script>
