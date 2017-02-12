@@ -54,6 +54,12 @@
         font-style: normal;
         color: yellow;
       }
+      img.trans {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
     </style>
 
     <!--[if lt IE 9]>
@@ -81,8 +87,8 @@
           <section>
             <h2>What is Functional Programming (FP)?</h2>
             <blockquote>
-              In computer science, functional programming is a programming paradigm—a style of 
-              building the structure and elements of computer programs—that treats computation as 
+              In computer science, functional programming is a programming paradigm—a style of
+              building the structure and elements of computer programs—that treats computation as
               the evaluation of mathematical functions and avoids changing-state and mutable data.
               <footer>- wikipedia</footer>
             </blockquote>
@@ -109,10 +115,8 @@
         </section>
 
         <section>
-          <ul>
-            <li>Get to learn some new terms that make you sound like you're brilliant.</li>
-          <ul>
-          <img class="fragment zoom-in" src="images/nick_cage_you_dont_say.jpg" alt="you don't say"/>
+          <p>Learn some new words that will help you along your journey.</p>
+          <img src="images/python_lead.jpg" alt="you don't say"/>
         </section>
 
         <section>
@@ -135,7 +139,7 @@ var people = [
   { first_name: 'Addie', last_name: 'Thomas',
     age: 1, occupation: 'Baby'}
 ];
-           </code></pre> 
+           </code></pre>
         </section>
 
         <section data-transition="slide-in fade-out">
@@ -169,7 +173,7 @@ people.forEach(function(person) {
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
             </code></pre>
             <ul>
-              <li class="fragment fade-in"><b>Lambda</b> (Anonymous function)</li>
+              <li class="fragment fade-in"><b>Lambda</b> (Anonymous function) <img class="trans" width=34 src="images/lambda.png"</li>
               <li class="fragment fade-in">forEach is a <b>Higher Order Function</b>
               <li class="fragment fade-in">Unfortunately this has <b>Side effects</b></br></br></li>
             </ul>
@@ -200,6 +204,7 @@ var names = people.map(function(person) {
               <li class="fragment fade-in">ES5 Array functions: <i>map, reduce, filter, find</i></li>
               <li class="fragment fade-in"><b>Pure Function</b> (no side effects)</li>
             </ul>
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
           </section>
           <section>
@@ -248,7 +253,7 @@ people.map(getName);
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
             </code></pre>
             <ul>
-              <li class="fragment fade-in">The <i>getAttribute</i> function got more useful and generalized 
+              <li class="fragment fade-in">The <i>getAttribute</i> function got more useful and generalized
                 through the use of a technic called <b>currying</b>.<br/><br/><br/></li>
             </ul>
           </section>
@@ -274,7 +279,7 @@ function getAttribute(attributeName) {
 
 people.map(getAttribute('first_name'));
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
-  
+
           </code></pre>
           <ul>
             <li class="fragment fade-in">Get used to this style. Functional JS just looks like functions passed to
@@ -285,10 +290,16 @@ people.map(getAttribute('first_name'));
         <section>
           <h2>Library based helper functions</h2>
           <ul>
-            <li>compose</li>
+            <li>flow(compose)</li>
             <li>curry</li>
             <li>map, reduce, filter</li>
           </ul>
+
+          <p class="fragment fade-in">
+            Lodash/fp&nbsp;&nbsp;<img class="trans" width=65 src="images/lodash.svg"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Ramda&nbsp;&nbsp;<img class="trans" width=65 src="images/ramda.png"/>
+          </p>
         </section>
 
         <section data-transition="fade-in slide-out">
@@ -318,7 +329,7 @@ var results = people
           <span class="example-num">example8</span>
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
-function strlength(str) {
+function strLength(str) {
   return str.length;
 }
 
@@ -328,7 +339,7 @@ var getAttribute = curry(function(attributename, obj) {
 
 var results = people
   .map(getAttribute('first_name'))
-  .map(strlength);
+  .map(strLength);
 
 // [4, 7, 5, 5]
           </code></pre>
@@ -342,7 +353,7 @@ var results = people
           <span class="example-num">example9</span>
           <pre><code class="javascript" data-trim style="max-height: 800px">
 var people = [...];
-function strlength(str) {
+function strLength(str) {
   return str.length;
 }
 
@@ -351,9 +362,9 @@ var getAttribute = curry(function(attributename, obj) {
 });
 
 var results = people
-  .map(compose(
-    strLength,
-    getAttribute('first_name')
+  .map(flow(
+    getAttribute('first_name'),
+    strLength
   ));
 // [4, 7, 5, 5]
           </code></pre>
@@ -377,9 +388,9 @@ var getAttribute = curry(function(attributeName, obj) {
 });
 
 var results = map(
-  compose(
-    strLength,
-    getAttribute('first_name')
+  flow(
+    getAttribute('first_name'),
+    strLength
   ), people);
 // [4, 7, 5, 5]
           </code></pre>
@@ -399,9 +410,9 @@ function strLength(str) {
 }
 
 var mapToNameLength = map(
-  compose(
-    strLength,
-    get('first_name')
+  flow(
+    get('first_name'),
+    strLength
   ));
 
 var results = mapToNameLength(people);
@@ -413,11 +424,16 @@ var results = mapToNameLength(people);
         </section>
 
         <section>
-          <h2>Barriers to Going All In</h2>
+          And now for something completely different.
+          <img src="images/completely_different.jpg" />
+        </section>
+
+        <section>
+          <h2>Adopting FP</h2>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li class="fragment fade-in">Use a helper library like Lodash/fp or Ramda</li>
+            <li class="fragment fade-in">Ensure your team is comfortable with the approach</li>
+            <li class="fragment fade-in">Not ready? just write <b>pure functions</b> and use es5 array functions like :<i>map</i>, <i>reduce</i>, <i>filter</i>, <i>find</i></li>
           </ul>
         </section>
 
@@ -434,11 +450,18 @@ var results = mapToNameLength(people);
           <h2>Questions?</h2>
           <br/>
           <ul>
-            <li><a href="https://facebook.github.io/react">https://facebook.github.io/react</a></li>
-            <li><a href="http://react.parts">http://react.parts</a></li>
-            <li><a href="http://facebook.github.io/flux">http://facebook.github.io/flux</a></li>
-            <li><a href="https://github.com/rackt/react-router">https://github.com/rackt/react-router</a></li>
-            http://eloquentjavascript.net/
+            <li>
+              <a href="https://github.com/hemanth/functional-programming-jargon">https://github.com/hemanth/functional-programming-jargon</a>
+            </li>
+            <li>
+              <a href="http://eloquentjavascript.net">http://eloquentjavascript.net/a>
+            </li>
+            <li>
+              <a href="https://github.com/hemanth/functional-programming-jargon">https://github.com/hemanth/functional-programming-jargon</a>
+            </li>
+            <li>
+              <a href="http://scott.sauyet.com/Javascript/Talk/FunctionalProgramming/">http://scott.sauyet.com/Javascript/Talk/FunctionalProgramming</a>
+            </li>
         </section>
 
       </div>

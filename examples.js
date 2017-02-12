@@ -189,8 +189,17 @@
     return mapToNameLength(people);
   }
 
+
+
+
+
+
   /**
-   * get all people full names over 50 that are Developers with firstName at least 5 characters long sorted By LastName
+   * - get the full names
+   *   of all Developers
+   *   over 50 years of age
+   *   with a first name at least 5 characters long
+   *   and sort the list by last name
    */
   exports.example12 = function(people) {
     function strLength(str) {
@@ -227,6 +236,29 @@
     return foundPeople;
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /**
+   * - get the full names
+   *   of all Developers
+   *   over 50 years of age
+   *   with a first name at least 5 characters long
+   *   and sort the list by last name
+   */
   exports.example13 = function(people) {
     function strLength(str) {
       return str.length;
@@ -249,12 +281,38 @@
       .filter(function(person) {
         return (person.occupation === 'Developer' &&
           person.age > 50 &&
-          strLength(person.first_name) >= 5)
+          strLength(person.first_name) >= 5);
       })
       .sort(compareBy('last_name'))
       .map(person => person.first_name + ' ' + person.last_name);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /**
+   * - get the full names
+   *   of all Developers
+   *   over 50 years of age
+   *   with a first name at least 5 characters long
+   *   and sort the list by last name
+   */
   exports.example14 = function(people) {
     function strLength(str) {
       return str.length;
