@@ -157,4 +157,25 @@
       ),
       people);
   }
+
+  /**
+   * 
+   */
+  exports.example11 = function(people) {
+    function strLength(str) {
+      return str.length;
+    }
+
+    var getAttribute = curry(function(attributeName, obj) {
+      return obj[attributeName];
+    });
+
+    var mapToNameLength = map(
+      compose(
+        strLength,
+        getAttribute('name')
+      ));
+
+    return mapToNameLength(people);
+  }
 }));

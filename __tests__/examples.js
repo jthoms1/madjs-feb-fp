@@ -47,4 +47,8 @@ describe('text examples', () => {
     const result = examples.example10(people);
     expect(result).toEqual([4, 7, 5, 5]);
   });
+  it('example11', () => {
+    const result = examples.example11(people);
+    expect(result).toEqual([4, 7, 5, 5]);
+  });
 });

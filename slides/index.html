@@ -322,7 +322,9 @@ function getAttribute(attributeName) {
 
 var results = people
   .map(getAttribute('name')) //['Josh', 'Lindsey', 'Ellie', 'Addie']
-  .map(strLength); // [4, 7, 5, 5]
+  .map(strLength);
+
+// [4, 7, 5, 5]
           </code></pre>
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -335,19 +337,20 @@ function strlength(str) {
   return str.length;
 }
 
-var getattribute = curry(function(attributename, obj) {
+var getAttribute = curry(function(attributename, obj) {
   return obj[attributename];
 });
 
-
-
 var results = people
-  .map(getattribute('name')) //['josh', 'lindsey', 'ellie', 'addie']
-  .map(strlength); // [4, 7, 5, 5]
+  .map(getAttribute('name')) //['josh', 'lindsey', 'ellie', 'addie']
+  .map(strlength);
+
+// [4, 7, 5, 5]
           </code></pre>
           <ul>
             <li class="fragment fade-in">The <i>curry</i> function takes a function as its argument and returns a curried version of that function.</li>
           </ul>
+          <p>&nbsp;</p>
         </section>
 
         <section data-transition="fade-in slide-out">
@@ -358,19 +361,22 @@ function strlength(str) {
   return str.length;
 }
 
-var getattribute = curry(function(attributename, obj) {
+var getAttribute = curry(function(attributename, obj) {
   return obj[attributename];
 });
 
-
 var results = people
-  .map(compose(strLength, getattribute('name')))
+  .map(compose(
+    strLength,
+    getAttribute('name')
+  ));
 // [4, 7, 5, 5]
           </code></pre>
           <ul>
             <li class="fragment fade-in"><b>Function Composition</b> is combining
             multiple functions where the output of one function is the input to another.</li>
           </ul>
+          <p>&nbsp;</p>
         </section>
 
         <section data-transition="fade-in slide-out">
@@ -385,24 +391,46 @@ var getAttribute = curry(function(attributeName, obj) {
   return obj[attributeName];
 });
 
-map(
+var results = map(
   compose(
     strLength,
     getAttribute('name')
-  ), people
-);
+  ), people);
 // [4, 7, 5, 5]
           </code></pre>
           <ul>
             <li><b>Function Composition</b> is combining
             multiple functions where the output of one function is the input to another.</li>
+            <li class="fragment fade-in">Why use <i>map</i> over <i>Array.map?</i></li>
           </ul>
         </section>
+
         <section>
+          <span class="example-num">example10</span>
+          <pre><code class="javascript" data-trim style="max-height: 800px">
+var people = [...];
+function strLength(str) {
+  return str.length;
+}
+
+var getAttribute = curry(function(attributeName, obj) {
+  return obj[attributeName];
+});
+
+var mapToNameLength = map(
+  compose(
+    strLength,
+    getAttribute('name')
+  ));
+
+var results = mapToNameLength(people);
+// [4, 7, 5, 5]
+          </code></pre>
           <ul>
-            <li>Auto-currying</li>
+            <li>Currying</li>
           </ul>
         </section>
+
         <section>
           <h2>Barriers to Going All In</h2>
           <ul>
