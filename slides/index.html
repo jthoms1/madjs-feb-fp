@@ -362,14 +362,15 @@ var getattribute = curry(function(attributename, obj) {
   return obj[attributename];
 });
 
-var getNameLength = compose(strLength, getAttribute('name'));
 
 var results = people
   .map(compose(strLength, getattribute('name')))
 // [4, 7, 5, 5]
           </code></pre>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+          <ul>
+            <li class="fragment fade-in"><b>Function Composition</b> is combining
+            multiple functions where the output of one function is the input to another.</li>
+          </ul>
         </section>
 
         <section data-transition="fade-in slide-out">
@@ -393,7 +394,7 @@ map(
 // [4, 7, 5, 5]
           </code></pre>
           <ul>
-            <li class="fragment fade-in"><b>Function Composition</b> is combining
+            <li><b>Function Composition</b> is combining
             multiple functions where the output of one function is the input to another.</li>
           </ul>
         </section>

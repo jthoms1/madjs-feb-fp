@@ -134,10 +134,8 @@
       return obj[attributename];
     });
 
-    var getNameLength = compose(strLength, getAttribute('name'));
-
     return people
-      .map(getNameLength);
+      .map(compose(strLength, getAttribute('name')));
   }
 
   /**
