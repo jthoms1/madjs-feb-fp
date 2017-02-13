@@ -27,6 +27,14 @@
   var isEqual = lodashfp.isEqual;
 
   /**
+   * var people = [
+   *   { first_name: 'Josh',    last_name: 'Thomas', age: 35, occupation: 'Developer' },
+   *   { first_name: 'Lindsey', last_name: 'Thomas', age: 35, occupation: 'Project Manager' },
+   *   { first_name: 'Ellie',   last_name: 'Thomas', age: 2,  occupation: 'Baby'},
+   *   { first_name: 'Addie',   last_name: 'Thomas', age: 1,  occupation: 'Baby'}
+   * ];
+   */
+  /**
    *
    */
   exports.example1 = function(people) {
@@ -192,7 +200,23 @@
 
 
 
-
+  /**
+   * var techPeople = [
+   *   { first_name: 'Adele',   last_name: 'Goldberg',   age: 71, occupation: 'Developer' },
+   *   { first_name: 'Audrey',  last_name: 'Tang',       age: 35, occupation: 'Developer' },
+   *   { first_name: 'Bill',    last_name: 'Gates',      age: 61, occupation: 'Philanthropist' },
+   *   { first_name: 'Gerald',  last_name: 'Sussman',    age: 70, occupation: 'Developer' },
+   *   { first_name: 'Grace',   last_name: 'Hopper',     age: 85, occupation: 'Developer' },
+   *   { first_name: 'Guy',     last_name: 'Steele',     age: 62, occupation: 'Developer' },
+   *   { first_name: 'Jade',    last_name: 'Raymond',    age: 41, occupation: 'Executive' },
+   *   { first_name: 'Jeff',    last_name: 'Bezos',      age: 53, occupation: 'CEO' },
+   *   { first_name: 'Marissa', last_name: 'Mayer',      age: 41, occupation: 'CEO' },
+   *   { first_name: 'Mark',    last_name: 'Zuckerberg', age: 32, occupation: 'CEO' },
+   *   { first_name: 'Martin',  last_name: 'Odersky',    age: 58, occupation: 'Developer' },
+   *   { first_name: 'Simon',   last_name: 'Jones',      age: 59, occupation: 'Developer' },
+   *   { first_name: 'Susan',   last_name: 'Wojcicki',   age: 48, occupation: 'CEO' }
+   * ];
+   */
 
   /**
    * - get the full names
