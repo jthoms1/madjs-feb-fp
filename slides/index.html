@@ -88,6 +88,14 @@
           </p>
         </section>
 
+        <section data-background-image="images/red-pill-blue-pill.jpg">
+          <h3 class="fragment fade-out" style="position: absolute; right: -30px">Object Oriented</h3>
+          <h3 style="position: absolute; left: 130px">Functional</h3>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </section>
+
         <section>
           <section>
             <h2>What is Functional Programming (FP)?</h2>
@@ -102,7 +110,7 @@
             <h2>What is Functional Programming (FP)?</h2>
             <blockquote>
               Functional programming is a style of building programs where application data flows through functions.
-              <footer class="fragment">- me</footer>
+              <footer>- me</footer>
             </blockquote>
           </section>
         </section>
@@ -120,11 +128,7 @@
         </section>
 
         <section>
-          <p>Learn some new words that will help you along your journey.</p>
-          <img src="images/python_lead.jpg" alt="you don't say"/>
-        </section>
-
-        <section>
+          <img class="trans" src="images/falling_rocks.png" width=250 /><br/><br/>
           <ul>
             <li>Concepts will build, so please <strong>ask questions</strong> if something doesn't make sense.<br/><br/></li>
             <li>Blue font is to identify <b>concepts</b>.</li>
@@ -235,13 +239,13 @@ var names = people.map(function(person) {
           <pre><code class="javascript" data-trim>
 var people = [...];
 
-function getAttribute(obj, attributeName) {
+function getAttribute(attributeName, obj) {
   return obj[attributeName];
 }
 
 
 people.map(function(person) {
-  return getAttribute(person, 'first_name');
+  return getAttribute('first_name', person);
 });
 // ['Josh', 'Lindsey', 'Ellie', 'Addie']
           </code></pre>
@@ -312,9 +316,9 @@ people.map(getAttribute('first_name'));
           </ul>
 
           <p class="fragment fade-in">
-            Lodash/fp&nbsp;&nbsp;<img class="trans" width=65 src="images/lodash.svg"/>
+            Lodash/fp&nbsp;&nbsp;<img style="padding: 15px; margin: 0" width=65 src="images/lodash.svg"/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Ramda&nbsp;&nbsp;<img class="trans" width=65 src="images/ramda.png"/>
+            Ramda&nbsp;&nbsp;<img style="padding: 15px; margin: 0" width=65 src="images/ramda.png"/>
           </p>
         </section>
 
