@@ -19,6 +19,6 @@
   "homepage": "https://github.com/jthoms1/madjs-feb-fp#readme",
   "dependencies": {
     "jest": "^18.1.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.21"
   }
 }
