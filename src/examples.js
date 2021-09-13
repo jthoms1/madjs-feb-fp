@@ -112,6 +112,13 @@ const example7 = (people) => {
   return people.map(getAttribute('first_name')).map(strLength);
 };
 
+const example7_pipe = (people) =>
+  people.map((obj) =>
+    obj
+    |> %['first_name']
+    |> %.length
+  );
+
 /**
  *
  */
@@ -170,15 +177,6 @@ const example11 = (people) => {
   return mapToNameLength(people);
 };
 
-const example11b = (people) => {
-  function strLength(str) {
-    return str.length;
-  }
-
-  const mapToNameLength = map(flow(get('first_name'), strLength));
-
-  return mapToNameLength(people);
-};
 
 /**
  * const techPeople = [
@@ -312,6 +310,7 @@ export {
   example5,
   example6,
   example7,
+  example7_pipe,
   example8,
   example9,
   example10,

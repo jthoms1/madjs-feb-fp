@@ -6,6 +6,7 @@ import {
   example5,
   example6,
   example7,
+  example7_pipe,
   example8,
   example9,
   example10,
@@ -77,6 +78,10 @@ describe('pick name and count characters examples', () => {
   ];
   it('example7', () => {
     const result = example7(people);
+    expect(result).toEqual([4, 7, 5, 5]);
+  });
+  it('example7_pipe', () => {
+    const result = example7_pipe(people);
     expect(result).toEqual([4, 7, 5, 5]);
   });
   it('example8', () => {
